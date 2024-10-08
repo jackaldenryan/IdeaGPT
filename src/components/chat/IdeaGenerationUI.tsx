@@ -22,11 +22,17 @@ export default function IdeaGenerationUI() {
   };
 
   return (
-    <div className="flex flex-col justify-between items-center h-[90vh] w-full">
+    // PRE 01
+    // <div className="flex flex-col justify-between items-center h-[90vh] w-full">
+    <div className="flex flex-col h-[90vh] w-full">
+      {/* PRE 01 */}
+      {/* <div className="w-full flex-grow"> */}
       <div className="w-full flex-grow">
         <IdeaTableContainer ideas={ideas} setIdeas={setIdeas} />
       </div>
-      <div className="w-1/2 mt-4 mb-8">
+      {/* PRE 01 */}
+      {/* <div className="w-1/2 mt-4 mb-8"> */}
+      <div className="w-1/2 mt-4 mb-8 flex-shrink-0 mx-auto">
         <PromptBoxAndButtons onNewIdeas={handleAppendIdeas} ideas={ideas} />
       </div>
     </div>

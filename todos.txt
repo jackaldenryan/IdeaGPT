@@ -1,0 +1,48 @@
+TODOs:
+
+- for now, just let users use with my API and restrict usage to like $10
+- deploy to vercel
+
+- Payment and Free uses
+    - Have to be signed in to use at all
+    - For each user, we track usage
+        - Once it reaches threshold, we prevent further usage for that user
+        - It then directs them to a pricing page that shows three options, each one with different usage limits
+            - Idea before thinking of economics:
+                - Free (20 generations / week)
+                - Pro ($2 / month, 200 gens / week)
+                    - Cancel easily anytime and retain membership for the remainder of the month
+                - Unlimited ($6 / month, 2,000 generations / week)
+- Ensure checkout, pricing, settings pages all work properly
+- Vercel
+
+- Checks before actually deploy:
+    - security
+        - SQL injection
+        - user input validation
+        - account and data security
+        - payment information security
+
+
+
+
+UI nice-to-have:
+- main app page: prompt box too low
+- auto scroll to bottom when new ideas generated
+- Sign in-page
+    - implement "remember me"
+    - implement email verification
+    - googel and facebook actually integrate for signing in
+    - better font
+- implement sign out functionality
+- implement user profile management
+- clear chat button
+    - one day: new chat button + saving old chat
+- if there is exact duplicate, checkbox and reason automatically same (is this good to keep? Whats going on?)
+- better advanced options menu
+- loading symbol
+- Demarking line between sets of ideas that had different prompt
+    - and maybe some note thing you can hover over that expands and tells you what the prompt was
+- "Enter" makes the prompt generate and ctrl-enter adds
+- when the text box gets bigger, it exapnds upward and never downward
+- Way to select ideas and save them to either a new “idea file” or append them to existing. Idea file is a lot like a previous chat, but you can upload an idea file to a new chat to instantiate it with labelled ideas. Can also download the idea file locally if you want

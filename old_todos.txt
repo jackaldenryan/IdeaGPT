@@ -1,0 +1,87 @@
+TODOs:
+- Does marking good/bad ideas really work?
+    - Try adding option to add reason why an idea is good
+    - Try with generating interesting sequences
+        - Need to allow the user to specify structure of idea, so that can generate code, then also 
+    - Try with better model
+    - Try fine-tuning
+    - Try improving the prompt
+
+
+
+
+LONG TERM GOALS:
+- Live website, sign in, pay as you go with slight upcharge from OpenAI API usage
+- Ultimate goal: good ideas as quick as possible
+    - subgoal: mark good and bad ideas
+    - subgoal: generate as many ideas as want (until gen too slow or stops)
+    - subgoal: no duplicate ideas
+Extra:
+- Can specify JSON structure of "idea" eg "description of idea + code of idea"
+- Every row is an idea object, and can apply a python script to columns to generate new columns as you go. 
+    - For example, inputting the idea code into larger python script, and:
+        - outputting whether failed or succeeded on test cases
+        - Or outputing the PNG of a graph
+        - outputing a png of a website page
+
+
+Nice to have (later):
+- try out all the different avoiding duplicate methods:
+    - approx avoid duplicates by including past ideas in prompt
+    - definitely avoid duplicates with vector search, temperature, and retrying (+prompt caching with claude)
+    - approx avoid duplicates by increasing temp over time at some rate
+- avoid duplicates
+    - With Claude, can do this cheaply with prompt caching
+    - W/o prompt caching:
+        - might work to just auto-reprompt with minimal needed context and without previous ideas, but with higher and higher temp
+          and if an idea is rejected via vector search we try again. Any downsides to higher temp? If yes, then tradeoff is these downsides vs token cost of including prev ideas in prompt
+- ensure the user-entered number of ideas is generated, definitely
+    - way to force using response_format?
+    - or just use a while loop until right number
+- user can specify the structure of an idea
+    - eg description + code
+- support slight modification to prompt but not losing ideas/good marked ideas
+- able to download CSV of ideas and label (good vs not)
+- button to clear all good ideas
+- button to clear all ideas
+- empty prompt is not allowed
+- generate small or large variations of specific idea
+- automatically send generated code to local computer, run it in a certain place in code base, and send back outputs/artifacts from that run
+    - For instance, 
+        - automatically get matplotlib graph
+        - get results of tests
+        - get picture of how web page looks
+    - Then, can 
+- Option to automatically tie good/bad label to one of the idea's artifacts (eg results of code tests)
+    - If this is an option, then also want option to automatically hit "Generate more" button after labelling has been done. Then you can press single button and get good code
+- is there a nicer way to prevent user from generating completely different ideas after generating some? it kind of ruins everything
+    - Maybe have interface for removing a set of past ideas (deleting them from history)
+
+
+
+Notes:
+- Potential issues with generating many ideas in one prompt:
+    - If ask for too many, model might stop really early, before even runs out of context
+    - IF ask for too many, ideas start deteriorating
+    - more duplicates if ask for a lot?
+
+
+
+Applications;
+- startup ideas
+- name ideas
+- code snippets
+- math proof directions
+- research ideas
+- inventing new math
+- social situation handling
+- wisdom
+- message response ideas (email, dating apps, copy, cover letter, etc)
+
+
+Thoughts:
+- Code complete that auto tests ideas
+   - Start by aiming for: make an API that autogenerates until specified stop condition (like passing test, or txt file equals something)
+- Idea gen better when can verify if idea good - as opposed to being unable to evaluate an idea
+- Idea gen with stop condition could be used to automatically find proofs, eg generating LEAN theorems and checking validity - perhaps just need to spend enough money on trying ideas and ensuring the LLM doesnt duplicate ideas
+- Prompt caching means we can ensure every individual idea is not duplicate cheaply

@@ -133,7 +133,7 @@ const SettingsPage: React.FC = () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      if (user) {
+      if (user && user.email) {
         setUserEmail(user.email); // Set the user's email
       }
     };

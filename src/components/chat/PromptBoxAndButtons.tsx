@@ -50,8 +50,6 @@ export default function PromptBoxAndButton({
 
   return (
     <div>
-      {/* Pre 01 */}
-      {/* <div className="flex items-center space-x-4 w-full"> */}
       <div className="flex items-end space-x-4 w-full">
         <PromptBox value={prompt} onChange={setPrompt} className="flex-grow" />
         <PromptButton onClick={handleGenerate} />

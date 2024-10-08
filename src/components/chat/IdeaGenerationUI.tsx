@@ -13,7 +13,7 @@ export default function IdeaGenerationUI() {
   const handleAppendIdeas = (newIdeas: Idea[]) => {
     const initializedIdeas = newIdeas.map((idea) => ({
       ...idea,
-      label: "bad" as "bad", // Default label is "bad"
+      label: "bad" as const, // Default label is "bad"
       reason: "", // Default reason is an empty string
     }));
 

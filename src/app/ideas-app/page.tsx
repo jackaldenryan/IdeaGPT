@@ -1,13 +1,67 @@
-// src/app/page.tsx
+// OLD CODE THAT USES A WITHAUTH HOC (but that doesnt work well with Next.js pages)
+// // src/app/ideas-app/page.tsx
+
+// "use client";
+
+// import React from "react";
+// import IdeaGenerationUI from "@/components/chat/IdeaGenerationUI";
+// import withAuth from "@/hoc/withAuth";
+
+// function Page() {
+//   return <IdeaGenerationUI />;
+// }
+
+// export default withAuth(Page);
+
+// src/app/ideas-app/page.tsx
 
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import IdeaGenerationUI from "@/components/chat/IdeaGenerationUI";
-import withAuth from "@/hoc/withAuth";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/supabaseClient";
+import { User } from "@supabase/supabase-js";
 
-function Page() {
-  return <IdeaGenerationUI />;
+export default function IdeasAppPage() {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (!session) {
+        router.push("/sign-in"); // Redirect to sign-in if no session
+      } else {
+        setUser(session.user);
+      }
+      setLoading(false);
+    };
+
+    checkUser();
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (!session) {
+          router.push("/sign-in"); // Redirect to sign-in if logged out
+        } else {
+          setUser(session.user);
+        }
+      }
+    );
+
+    return () => {
+      authListener?.subscription?.unsubscribe();
+    };
+  }, [router]);
+
+  if (loading) {
+    return <div>Loading...</div>; // You can replace this with a better loading indicator
+  }
+
+  // If user exists, render the IdeaGenerationUI component
+  return user ? <IdeaGenerationUI /> : null;
 }
-
-export default withAuth(Page);

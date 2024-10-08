@@ -1,29 +1,34 @@
 "use client";
 
-import * as React from 'react';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import OpenAI from 'openai';
+import * as React from "react";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 
 type AdvancedOptionsMenuProps = {
   open: boolean;
   onClose: () => void;
-  setOptions: React.Dispatch<React.SetStateAction<{ numIdeas: number; modelType: string }>>;
+  setOptions: React.Dispatch<
+    React.SetStateAction<{ numIdeas: number; modelType: string }>
+  >;
   options: { numIdeas: number; modelType: string };
 };
 
-export default function AdvancedOptionsMenu({ open, onClose, setOptions, options }: AdvancedOptionsMenuProps) {
-    
+export default function AdvancedOptionsMenu({
+  open,
+  onClose,
+  setOptions,
+  options,
+}: AdvancedOptionsMenuProps) {
   const handleNumIdeasChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newNumIdeas = parseInt(event.target.value, 10);
     setOptions((prevOptions) => ({
       ...prevOptions,
-      numIdeas: newNumIdeas
+      numIdeas: newNumIdeas,
     }));
   };
 
@@ -31,7 +36,7 @@ export default function AdvancedOptionsMenu({ open, onClose, setOptions, options
     const newModelType = event.target.value;
     setOptions((prevOptions) => ({
       ...prevOptions,
-      modelType: newModelType
+      modelType: newModelType,
     }));
   };
 
@@ -53,10 +58,10 @@ export default function AdvancedOptionsMenu({ open, onClose, setOptions, options
             <InputLabel id="model-type-label">Model Type</InputLabel>
             <Select
               labelId="model-type-label"
-              value={options.modelType} 
+              value={options.modelType}
               onChange={handleModelTypeChange}
               label="Model Type"
-            > 
+            >
               {/* <MenuItem key="o1-preview" value="o1-preview">
                 o1-preview
               </MenuItem> */}

@@ -25,25 +25,3 @@ body {
     text-wrap: balance;
   }
 }
-
-/* src/app/globals.css */
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%; /* Ensures the body and html take the full viewport height */
-  width: 100%; /* Ensures the body and html take the full viewport width */
-  background-color: hsl(
-    0,
-    0%,
-    100%
-  ); /* Fallback in case the background image fails */
-  background-image: radial-gradient(
-    ellipse at 50% 50%,
-    hsl(210, 100%, 97%),
-    hsl(0, 0%, 100%)
-  );
-  background-repeat: no-repeat;
-  background-size: cover; /* Ensures the background covers the whole viewport */
-}

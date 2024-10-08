@@ -1,13 +1,6 @@
-// src/app/page.tsx
+import { redirect } from "next/navigation";
 
-"use client";
-
-import React from "react";
-import IdeaGenerationUI from "@/components/chat/IdeaGenerationUI";
-import withAuth from "@/hoc/withAuth";
-
-function Page() {
-  return <IdeaGenerationUI />;
+export default function Home() {
+  // Redirect to /sign-in
+  redirect("/sign-in");
 }
-
-export default withAuth(Page);

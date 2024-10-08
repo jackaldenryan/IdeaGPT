@@ -5,9 +5,9 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
+// import Checkbox from "@mui/material/Checkbox";
 import CssBaseline from "@mui/material/CssBaseline";
-import FormControlLabel from "@mui/material/FormControlLabel";
+// import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
 import Link from "@mui/material/Link";
@@ -74,7 +74,7 @@ export default function SignUp() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [rememberMe, setRememberMe] = useState<boolean>(false);
+  // const [rememberMe, setRememberMe] = useState<boolean>(false);
 
   // Error states
   const [nameError, setNameError] = useState<string>("");
@@ -270,7 +270,7 @@ export default function SignUp() {
                 color={Boolean(passwordError) ? "error" : "primary"}
               />
             </FormControl>
-            <FormControlLabel
+            {/* <FormControlLabel
               control={
                 <Checkbox
                   checked={rememberMe}
@@ -280,7 +280,7 @@ export default function SignUp() {
                 />
               }
               label="I want to receive updates via email."
-            />
+            /> */}
             {generalError && (
               <Typography color="error" variant="body2">
                 {generalError}

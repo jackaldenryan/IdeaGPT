@@ -46,18 +46,23 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 const SignUpContainer = styled(Stack)(({ theme }) => ({
-  minHeight: "100vh", // Ensure it takes full viewport height
-  padding: theme.spacing(2),
-  [theme.breakpoints.up("sm")]: {
-    padding: theme.spacing(4),
-  },
-  backgroundImage:
-    "radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))",
-  backgroundRepeat: "no-repeat",
-  ...theme.applyStyles("dark", {
+  padding: 20,
+  marginTop: "10vh",
+  position: "relative",
+  "&::before": {
+    content: '""',
+    display: "block",
+    position: "absolute",
+    zIndex: -1,
+    inset: 0,
     backgroundImage:
-      "radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))",
-  }),
+      "radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))",
+    backgroundRepeat: "no-repeat",
+    ...theme.applyStyles("dark", {
+      backgroundImage:
+        "radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))",
+    }),
+  },
 }));
 
 // interface SignUpProps {
@@ -199,6 +204,20 @@ export default function SignUp() {
   return (
     <ThemeProvider theme={showCustomTheme ? SignUpTheme : defaultTheme}>
       <CssBaseline enableColorScheme />
+      <Typography
+        component="h1"
+        variant="h2"
+        sx={{
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: "3rem",
+          color: "black",
+          marginTop: "3rem", // Adds space from the top of the page
+          marginBottom: "2rem", // Keeps space below the title
+        }}
+      >
+        IdeaGPT
+      </Typography>
       <SignUpContainer direction="column" justifyContent="center">
         <Card variant="outlined">
           {/* <SitemarkIcon /> */}

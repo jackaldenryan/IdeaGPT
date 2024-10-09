@@ -154,6 +154,21 @@ export default function SignInForm({ disableCustomTheme }: SignInFormProps) {
   return (
     <AppTheme disableCustomTheme={disableCustomTheme}>
       <CssBaseline enableColorScheme />
+      <Typography
+        component="h1"
+        variant="h2"
+        sx={{
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: "3rem",
+          color: "black",
+          marginTop: "3rem", // Adds space from the top of the page
+          marginBottom: "2rem", // Keeps space below the title
+        }}
+      >
+        IdeaGPT
+      </Typography>
+
       <SignInContainer direction="column" justifyContent="space-between">
         {/* <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} /> */}
         <Card variant="outlined">

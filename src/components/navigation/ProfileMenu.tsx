@@ -31,7 +31,7 @@ export default function ProfileMenu() {
   };
 
   const handleNavigateIdeasApp = () => {
-    router.push("/ideas-app");
+    router.push("/idea-gpt");
   };
 
   const handleNavigateSettings = () => {
@@ -61,7 +61,7 @@ export default function ProfileMenu() {
           style: { width: "200px" },
         }}
       >
-        <MenuItem onClick={handleNavigateIdeasApp}>Ideas App</MenuItem>
+        <MenuItem onClick={handleNavigateIdeasApp}>IdeaGPT</MenuItem>
         <MenuItem onClick={handleNavigateSettings}>Settings</MenuItem>
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>

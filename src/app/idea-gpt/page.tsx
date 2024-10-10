@@ -1,19 +1,4 @@
-// OLD CODE THAT USES A WITHAUTH HOC (but that doesnt work well with Next.js pages)
-// // src/app/ideas-app/page.tsx
-
-// "use client";
-
-// import React from "react";
-// import IdeaGenerationUI from "@/components/chat/IdeaGenerationUI";
-// import withAuth from "@/hoc/withAuth";
-
-// function Page() {
-//   return <IdeaGenerationUI />;
-// }
-
-// export default withAuth(Page);
-
-// src/app/ideas-app/page.tsx
+// src/app/idea-gpt/page.tsx
 
 "use client";
 

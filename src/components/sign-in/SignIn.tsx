@@ -85,7 +85,7 @@ export default function SignInForm({ disableCustomTheme }: SignInFormProps) {
       } = await supabase.auth.getSession();
       if (session) {
         // If user is already authenticated, redirect to home
-        router.push("/ideas-app");
+        router.push("/idea-gpt");
       }
     };
 
@@ -143,7 +143,7 @@ export default function SignInForm({ disableCustomTheme }: SignInFormProps) {
         setError(authError.message);
       } else {
         // Redirect to home or protected page after successful sign-in
-        router.push("/ideas-app");
+        router.push("/idea-gpt");
       }
     } catch (err) {
       setError("An unexpected error occurred. Please try again.");

@@ -55,7 +55,7 @@ export default function PromptBoxAndButton({
         <PromptBox value={prompt} onChange={setPrompt} className="flex-grow" />
         <PromptButton onClick={handleGenerate} />
         <GearIcon setOptions={setOptions} options={options} />
-        <QuestionIcon setOptions={setOptions} options={options} />
+        <QuestionIcon />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import PromptBox from "./PromptBox";
 import PromptButton from "./PromptButton";
 import GearIcon from "./GearIcon";
+import QuestionIcon from "./QuestionIcon";
 
 import { Idea, LLMResponse } from "@/components/chat/types";
 
@@ -54,6 +55,7 @@ export default function PromptBoxAndButton({
         <PromptBox value={prompt} onChange={setPrompt} className="flex-grow" />
         <PromptButton onClick={handleGenerate} />
         <GearIcon setOptions={setOptions} options={options} />
+        <QuestionIcon setOptions={setOptions} options={options} />
       </div>
     </div>
   );

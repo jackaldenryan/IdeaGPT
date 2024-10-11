@@ -9,16 +9,18 @@ import { Idea } from "@/components/chat/types";
 
 export default function IdeaGenerationUI() {
   const [ideas, setIdeas] = useState<Idea[]>([]);
+  const [nextId, setNextId] = useState<number>(0);
 
   const handleAppendIdeas = (newIdeas: Idea[]) => {
-    const initializedIdeas = newIdeas.map((idea) => ({
+    const initializedIdeas = newIdeas.map((idea, index) => ({
       ...idea,
-      label: "bad" as const, // Default label is "bad"
-      reason: "", // Default reason is an empty string
+      id: nextId + index,
+      label: "neutral" as const,
+      reason: "",
     }));
 
-    // Append the new ideas to the existing ones
     setIdeas((prevIdeas) => [...prevIdeas, ...initializedIdeas]);
+    setNextId(nextId + newIdeas.length);
   };
 
   return (

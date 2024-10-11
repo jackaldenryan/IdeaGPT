@@ -18,6 +18,13 @@ export default function PromptBox({
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange(event.target.value);
   };
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      document.getElementById("generate-btn")?.click();
+      event.currentTarget.blur();
+    }
+  };
 
   return (
     <div className={`relative ${className}`} style={{ minHeight: "50px" }}>
@@ -29,6 +36,7 @@ export default function PromptBox({
         maxRows={5}
         value={value}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         style={{ resize: "none" }} // Prevent manual resizing
       />
     </div>

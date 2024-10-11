@@ -59,16 +59,22 @@ import { Idea } from "@/components/chat/types";
 
 type IdeaRowProps = {
   idea: Idea;
-  setIdea: (updatedIdea: Idea) => void; // Function to update this specific idea
+  setIdea: (updatedIdea: Idea) => void;
 };
 
 export default function IdeaRow({ idea, setIdea }: IdeaRowProps) {
   const handleThumbUpClick = () => {
-    setIdea({ ...idea, label: idea.label === "good" ? "bad" : "good" });
+    setIdea({
+      ...idea,
+      label: idea.label === "good" ? "neutral" : "good",
+    });
   };
 
   const handleThumbDownClick = () => {
-    setIdea({ ...idea, label: idea.label === "bad" ? "good" : "bad" });
+    setIdea({
+      ...idea,
+      label: idea.label === "bad" ? "neutral" : "bad",
+    });
   };
 
   const handleReasonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,12 +89,26 @@ export default function IdeaRow({ idea, setIdea }: IdeaRowProps) {
       {/* Thumbs Up/Down and Textbox */}
       <div className="flex items-center space-x-2">
         <IconButton onClick={handleThumbUpClick}>
-          <ThumbUpIcon color={idea.label === "good" ? "primary" : "disabled"} />
+          <ThumbUpIcon
+            color={
+              idea.label === "good"
+                ? "primary"
+                : idea.label === "neutral"
+                ? "disabled"
+                : "disabled"
+            }
+          />
         </IconButton>
 
         <IconButton onClick={handleThumbDownClick}>
           <ThumbDownIcon
-            color={idea.label === "bad" ? "primary" : "disabled"}
+            color={
+              idea.label === "bad"
+                ? "primary"
+                : idea.label === "neutral"
+                ? "disabled"
+                : "disabled"
+            }
           />
         </IconButton>
 

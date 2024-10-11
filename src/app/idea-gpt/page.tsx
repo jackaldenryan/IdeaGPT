@@ -44,7 +44,7 @@ export default function IdeasAppPage() {
   }, [router]);
 
   if (loading) {
-    return <div>Loading...</div>; // You can replace this with a better loading indicator
+    return <div></div>;
   }
 
   // If user exists, render the IdeaGenerationUI component

@@ -20,6 +20,7 @@ export default function PromptButton({ onClick }: PromptButtonProps) {
 
   return (
     <Button
+      id="generate-btn"
       variant="contained"
       size="large"
       onClick={handleClick}

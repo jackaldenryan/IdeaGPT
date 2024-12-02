@@ -1,27 +1,60 @@
 "use client";
 
-import * as React from 'react';
-import IconButton from '@mui/material/IconButton';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AdvancedOptionsMenu from './AdvancedOptionsMenu'; // Import the separate modal component
+import * as React from "react";
+import IconButton from "@mui/material/IconButton";
+import SettingsIcon from "@mui/icons-material/Settings";
+import Popover from "@mui/material/Popover";
+import AdvancedOptionsMenu from "./AdvancedOptionsMenu";
 
 interface GearIconProps {
-    setOptions: React.Dispatch<React.SetStateAction<{ numIdeas: number; modelType: string }>>;
-    options: { numIdeas: number; modelType: string };
+  setOptions: React.Dispatch<
+    React.SetStateAction<{ numIdeas: number; modelType: string }>
+  >;
+  options: { numIdeas: number; modelType: string };
 }
 
 export default function GearIcon({ setOptions, options }: GearIconProps) {
-  const [open, setOpen] = React.useState(false); // State to control modal visibility
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <>
       <IconButton onClick={handleOpen}>
         <SettingsIcon />
       </IconButton>
-      <AdvancedOptionsMenu open={open} onClose={handleClose} setOptions={setOptions} options={options}/> {/* Pass open/close state */}
+
+      {/* Use Popover instead of Menu */}
+      <Popover
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        PaperProps={{
+          style: { minWidth: "250px" }, // Optional styling
+        }}
+      >
+        {/* Pass options to your custom AdvancedOptionsMenu */}
+        <AdvancedOptionsMenu
+          setOptions={setOptions}
+          options={options}
+          onClose={handleClose}
+        />
+      </Popover>
     </>
   );
 }

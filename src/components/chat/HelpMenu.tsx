@@ -13,7 +13,7 @@ export default function HelpMenu({ open, onClose }: HelpMenuProps) {
   return (
     <Modal open={open} onClose={onClose}>
       <Box className="bg-white p-6 rounded-lg shadow-lg mx-auto my-20 max-w-sm relative top-1/2 transform -translate-y-1/2">
-        <h2 className="text-xl font-bold mb-4">Help</h2>
+        <h2 className="text-xl font-bold mb-4">How it works</h2>
         <p className="mb-6">
           When you click generate, you are sending your prompt plus all the
           previously generated ideas on the screen to the AI in an automatically

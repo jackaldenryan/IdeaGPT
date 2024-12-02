@@ -41,6 +41,8 @@ export async function POST(request: Request) {
     console.log("\n\nSUPER-PROMPT:\n");
     console.log(finalPrompt);
     console.log("\n\n");
+    console.log("OPTIONS:\n", options);
+    console.log("\n\n");
 
     // Call OpenAI API to get new ideas
     const completion = await openai.beta.chat.completions.parse({

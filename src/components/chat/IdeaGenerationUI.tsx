@@ -28,7 +28,7 @@ export default function IdeaGenerationUI() {
       <div className="w-full flex-grow">
         <IdeaTableContainer ideas={ideas} setIdeas={setIdeas} />
       </div>
-      <div className="w-1/2 mt-4 mb-8 flex-shrink-0 mx-auto">
+      <div className="w-full md:w-1/2 mt-4 mb-8 flex-shrink-0 mx-auto px-4">
         <PromptBoxAndButtons onNewIdeas={handleAppendIdeas} ideas={ideas} />
       </div>
     </div>
